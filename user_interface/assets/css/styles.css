@@ -1,0 +1,21 @@
+#move {
+  --app-region: drag;
+  /*-app-region: drag;*/
+  app-region: drag;
+  --webkit-app-region: drag;
+  -webkit-app-region: drag;
+  /*webkit-app-region: drag;*/
+}
+
+button {
+  -webkit-app-region: no-drag;
+}
+
+a {
+  -webkit-app-region: no-drag;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+

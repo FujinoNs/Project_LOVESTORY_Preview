@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>LOVESTORY</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=K2D&amp;display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Cursor.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark-icons.css">
+    <link rel="stylesheet" href="assets/css/Responsive-UI-Card.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Swipe-Slider-9.css">
+</head>
+
+<body style="font-family: K2D, sans-serif;max-width: 1280px;" onload="window.chrome.webview.postMessage(&#39;settingsPage&#39;);">
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top bg-dark cursor-default" id="move">
+        <div class="container-fluid"><a class="navbar-brand">LOVESTORY</a>
+            <div class="collapse navbar-collapse show" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home" style="padding: 4px;"></i>หน้าหลัก</a></li>
+                    <li class="nav-item"></li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="settings.html"><i class="fa fa-gear" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding: 4px;" title="การตั้งค่า"></i></a></li>
+                    <li class="nav-item"><a class="nav-link cursor-pointer" onclick="window.chrome.webview.postMessage(&#39;refresh_launcher&#39;);"><i class="fa fa-rotate-right" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding: 4px;" title="รีเฟรช"></i></a></li>
+                    <li class="nav-item"><a class="nav-link cursor-pointer" onclick="window.chrome.webview.postMessage(&#39;minimize_launcher&#39;);"><i class="fa fa-minus" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding: 4px;" title="ย่อหน้าต่าง"></i></a></li>
+                    <li class="nav-item"><a class="nav-link cursor-pointer" onclick="window.chrome.webview.postMessage(&#39;close_launcher&#39;);"><i class="fas fa-times" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding: 4px;" title="ปิดหน้าต่าง"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid fw-light py-lg-3 cursor-default">
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">การตั้งค่าข้อมูลส่วนตัว</p>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label" for="first_name"><strong>ชื่อผู้เล่น</strong></label><input class="form-control" type="text" id="name_player" placeholder="ชื่อ_นามสกุล" name="name_player" required=""></div>
+                        </div>
+                        <div class="col-md-6 align-self-center">
+                            <div class="mb-3"></div><button class="btn btn-warning border-0" type="button" onclick="saveNamePlayer();"><i class="far fa-check-circle" style="margin-right: 6px;"></i>บันทึกการตั้งค่า</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">เกี่ยวกับไฟล์</p>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row" style="margin-bottom: 25px;text-align: left;">
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label"><span style="color: rgb(0, 0, 0); background-color: rgba(255, 255, 255, 0.5);">เวอร์ชั่น Launcher ที่กำลังใช้งาน</span></label><input class="form-control" type="text" id="launcher_version" placeholder="V.0.0.0" readonly="" disabled=""></div>
+                        </div>
+                        <div class="col-md-6 align-self-end">
+                            <div class="mb-3"><button class="btn btn-primary text-bg-warning border-0" type="button" onclick="window.chrome.webview.postMessage(&#39;checkLauncherUpdate&#39;);"><i class="fas fa-redo" style="margin-right: 6px;"></i>ตรวจสอบอัพเดต</button><button class="btn btn-primary text-bg-danger border-0 ms-3" type="button" onclick="window.chrome.webview.postMessage(&#39;newInstallLauncher&#39;);"><i class="fas fa-download" style="margin-right: 6px;"></i>ติดตั้งใหม่</button></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label"><span style="color: rgb(0, 0, 0); background-color: rgba(255, 255, 255, 0.5);">เวอร์ชั่นแพตซ์</span></label><input class="form-control" type="text" id="patch_version" placeholder="V.0.0.0" readonly="" disabled=""></div>
+                        </div>
+                        <div class="col-md-6 align-self-end">
+                            <div class="mb-3"><button class="btn btn-primary text-bg-warning border-0" type="button" onclick="window.chrome.webview.postMessage(&#39;checkPatchUpdate&#39;);"><i class="fas fa-redo" style="margin-right: 6px;"></i>ตรวจสอบอัพเดต</button><button class="btn btn-primary text-bg-danger border-0 ms-3" type="button" onclick="window.chrome.webview.postMessage(&#39;newInstallPatch&#39;);"><i class="fas fa-download" style="margin-right: 6px;"></i>ติดตั้งใหม่</button></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label"><span style="color: rgb(0, 0, 0); background-color: rgba(255, 255, 255, 0.5);">ตำแหน่งไฟล์ SAMP.EXE</span></label><input class="form-control" type="text" id="path_samp" placeholder="ไม่ทราบ" readonly="" disabled=""></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3"><label class="form-label"><span style="color: rgb(0, 0, 0); background-color: rgba(255, 255, 255, 0.5);">ตำแหน่งไฟล์ GTA_SA.EXE</span></label><input class="form-control" type="text" id="path_gtasa" placeholder="ไม่ทราบ" readonly="" disabled=""></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center cursor-default">
+        <div class="container text-white py-4 py-lg-2">
+            <p class="text-muted mb-0">Copyright © 2023 LOVESTORY</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/app-script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
