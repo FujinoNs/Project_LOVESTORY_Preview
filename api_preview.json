@@ -1,0 +1,13 @@
+{
+    "LauncherName": "LOVESTORY",
+    "LauncherUILauncherURL": "https://fujinons.github.io/Project_LOVESTORY_Preview/user_interface/index.html",
+    "serverIP": "191.96.92.70",
+    "serverPort": "7777",
+    "sampServerPassword": "",
+    "UpdateLauncher_url_new_file_launcher_setup": "null",
+    "UpdateLauncher_version_launcher": "1.0.0.0",
+    "UpdateGame_url_file_game": "https://www.dropbox.com/s/9bq390bhf1m28xs/mainGame.zip?dl=1",
+    "UpdateGame_version_file_game": "29.05.2023.preview",
+    "UpdateModloader_url_file_modloader": "https://www.dropbox.com/s/vdnfegouk2y2ham/modloader.zip?dl=1",
+    "UpdateModloader_version_mods": "29.05.2023.preview"
+}
